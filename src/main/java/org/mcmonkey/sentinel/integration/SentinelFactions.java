@@ -35,14 +35,14 @@ public class SentinelFactions extends SentinelIntegration {
             }
             else if (prefix.equals("factionsenemy") && ent instanceof Player) {
                 Faction faction = Factions.getInstance().getByTag(value);
-                Faction plf = FPlayers.getInstance().getByPlayer(((Player) ent).getPlayer()).getFaction();
+                FPlayer plf = FPlayers.getInstance().getByPlayer((Player)ent);
                 if (faction.getRelationTo(plf).equals(Relation.ENEMY)) {
                     return true;
                 }
             }
             else if (prefix.equals("factionsally") && ent instanceof Player) {
                 Faction faction = Factions.getInstance().getByTag(value);
-                Faction plf = FPlayers.getInstance().getByPlayer(((Player) ent).getPlayer()).getFaction();
+                FPlayer plf = FPlayers.getInstance().getByPlayer((Player)ent);
                 if (faction.getRelationTo(plf).equals(Relation.ALLY)) {
                     return true;
                 }
