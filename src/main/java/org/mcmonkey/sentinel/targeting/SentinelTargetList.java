@@ -121,9 +121,15 @@ public class SentinelTargetList {
         }
         for (ArrayList<CachedOtherTarget> targets : otherTargetCache.values()) {
             for (CachedOtherTarget target : targets) {
-                if (target.integration.isTarget(entity, target.prefix, target.value)) {
-                    return true;
+                try {
+                    return target.integration.isTarget(entity, target.prefix, target.value);
+                } catch (Exception e) {
+                    if (e instanceof java.lang.NullPointerException );
+                    {
+                        targets.remove(target);
+                    }
                 }
+                    return false;
             }
         }
         for (SentinelTargetList allInOne : byAllInOne) {

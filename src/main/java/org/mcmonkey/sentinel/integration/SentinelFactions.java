@@ -23,7 +23,6 @@ public class SentinelFactions extends SentinelIntegration {
 
     @Override
     public boolean isTarget(LivingEntity ent, String prefix, String value) {
-        try {
             if (prefix.equals("factions") && ent instanceof Player) {
                 Faction faction = Factions.getInstance().getByTag(value);
                 for (FPlayer pl: faction.getFPlayers()) {
@@ -47,10 +46,6 @@ public class SentinelFactions extends SentinelIntegration {
                     return true;
                 }
             }
-        }
-        catch (Exception ex) {
-            ex.printStackTrace();
-        }
         return false;
     }
 }
